@@ -1,0 +1,36 @@
+.list-group {
+  min-width: 280px;
+  max-height: 300px;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .list-item {
+    .participant-row {
+      display: flex;
+      align-items: center;
+
+      .participant-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+
+        .participant-username {
+          margin: 0 8px;
+        }
+      }
+
+      button {
+        display: flex;
+        padding: 0;
+        background-color: inherit;
+        color: #000;
+        border-radius: 50%;
+      }
+    }
+  }
+}

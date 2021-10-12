@@ -1,0 +1,43 @@
+.notification-container {
+  min-height: 100px;
+  position: fixed;
+  top: 8px;
+  right: 8px;
+  z-index: 3000;
+
+  .notification-toast {
+    min-width: 200px;
+
+    &.error {
+      background: red;
+    }
+
+    &.success {
+      background: green;
+    }
+
+    &.warning {
+      background: cyan;
+    }
+
+    .toast-body {
+      display: flex;
+      align-items: flex-start;
+      color: white;
+
+      .toast-message {
+        margin: 0;
+        flex: 1;
+      }
+
+      .toast-btn-dismiss {
+        width: 25px;
+        padding: 0;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        color: white;
+      }
+    }
+  }
+}

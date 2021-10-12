@@ -1,0 +1,15 @@
+@use "./variables";
+
+.hidden {
+  display: none;
+}
+
+.timer {
+  width: 136px;
+  border-radius: 5px;
+  margin-left: 15px;
+  padding: 4px 6px;
+  text-align: center;
+  background-color: darken(variables.$color-secondary, 5%);
+  color:white;
+}

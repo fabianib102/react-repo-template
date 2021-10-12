@@ -1,0 +1,80 @@
+@use "./variables";
+
+.channel-details {
+  .pre-conference-title {
+    padding: 25px 20px 0 20px;
+  }
+
+  .back-button {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      height: 25px;
+    }
+  }
+
+  textarea {
+    resize: none !important;
+  }
+
+  fieldset {
+    width: fit-content !important;
+    margin: 8px !important;
+    border: 1px solid silver !important;
+    border-radius: 4px !important;
+    padding: 8px !important;
+  }
+
+  legend {
+    width: initial !important;
+    padding: 2px !important;
+    font-size: large !important;
+  }
+
+  label {
+    font-size: large !important;
+  }
+
+  .form-check {
+    padding-top: 10px;
+    display: flex !important;
+  }
+
+  .channel-iframe-container {
+    padding-bottom: 50px;
+  }
+
+  .bottom-options {
+    padding: 15px;
+    justify-content: flex-end;
+  }
+
+  .nav-tabs {
+    a {
+      color: var(--secondary);
+      &.active {
+        color: variables.$color-primary;
+        font-weight: bold;
+      }
+      &.disabled {
+        background-color: variables.$color-disabled;
+      }
+    }
+  }
+
+  .tab-content {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .embeddable-iframe {
+    padding-top: 15px;
+  }
+}

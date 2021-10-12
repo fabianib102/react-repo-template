@@ -1,0 +1,14 @@
+@use "../variables";
+
+.consumer-actions {
+  .quick-action-button {
+    margin: {
+      left: 6px;
+      right: 6px;
+    }
+  }
+
+  .ask-to-join {
+    color: variables.$color-secondary;
+  }
+}

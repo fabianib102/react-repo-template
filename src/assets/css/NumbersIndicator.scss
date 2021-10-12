@@ -1,0 +1,33 @@
+.indicators {
+  border: solid black 1px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  &.last-number {
+    height: 150px;
+    width: 150px;
+    background-color: #fcc430;
+    border-color: #dda303;
+  }
+
+  &.numbers-called {
+    height: 90px;
+    width: 90px;
+    background-color: #d6d6d6;
+    border-color: #6c757d;
+  }
+
+  h1 {
+    font: {
+      size: 5rem;
+      weight: 600;
+    }
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "short_name": "Admin Portal",
+  "name": "Ultra Low Latency Platform - Admin Portal",
+  "icons": [
+    {
+      "src": "favicon-192x192.png.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "favicon-180x180.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "favicon-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

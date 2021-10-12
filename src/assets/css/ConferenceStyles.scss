@@ -1,0 +1,19 @@
+.conference {
+  padding: 0 !important;
+
+  .conference-header {
+    height: 60px;
+    align-items: center;
+    background-color: #f3f2f1;
+    color: black;
+    padding: 5px 0;
+
+    .title {
+      font-size: x-large;
+    }
+  }
+
+  .conference-container {
+    height: calc(100vh - 150px);
+  }
+}

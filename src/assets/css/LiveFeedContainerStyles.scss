@@ -1,0 +1,75 @@
+$little-streamer-width: 178px;
+$little-streamer-height: 100px;
+
+.live-feed-container {
+  justify-content: center;
+  background: {
+    image: url('../images/southworks.png');
+    repeat: repeat-x;
+    position: bottom;
+    size: 410px;
+    color: #13322b;
+  }
+
+  /* 1 stream */
+  .live-feed:first-child:nth-last-child(1),
+  .live-feed:first-child:nth-last-child(1) ~ .live-feed {
+    height: 100%;
+  }
+
+  /* 2 streams */
+  .live-feed:first-child:nth-last-child(2) {
+    border-bottom: 1px solid darken(#e9e8e9, 25%);
+  }
+
+  .live-feed:first-child:nth-last-child(2),
+  .live-feed:first-child:nth-last-child(2) ~ .live-feed {
+    width: 50%;
+    height: 100%;
+
+    /* 2 streams (1 shared screen and 1 streamer) */
+    &#screen-share {
+      width: 100%;
+      height: calc(100% - #{$little-streamer-height});
+      border-bottom: 1px solid darken(#e9e8e9, 25%);
+      object-fit: contain;
+
+      & + .live-feed {
+        width: $little-streamer-width;
+        height: $little-streamer-height;
+      }
+    }
+  }
+
+  .live-feed:nth-last-child(2) {
+    border-right: 1px solid darken(#e9e8e9, 25%);
+  }
+
+  /* 3 streams */
+  .live-feed:first-child:nth-last-child(3),
+  .live-feed:first-child:nth-last-child(3) ~ .live-feed {
+    &#screen-share {
+      width: 100%;
+      height: calc(100% - #{$little-streamer-height});
+      border-bottom: 1px solid darken(#e9e8e9, 25%);
+      object-fit: contain;
+    }
+
+    /* 3 streams (1 shared screen and 2 streamers) */
+    &:not(#screen-share) {
+      width: $little-streamer-width;
+      height: $little-streamer-height;
+    }
+  }
+
+  .offline-message-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    background-color: rgb(0, 0, 0);
+  }
+}

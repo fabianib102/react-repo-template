@@ -1,0 +1,182 @@
+@use "./variables";
+
+input {
+  &[type='checkbox'] {
+    width: 14px !important;
+    height: 14px !important;
+    display: inline-block;
+  }
+}
+
+.form-control {
+  &:focus {
+    border-color: lighten(variables.$color-primary, 30%) !important;
+    box-shadow: 0 0 0 0.2rem rgba(lighten(variables.$color-primary, 20%), 0.5) !important;
+  }
+}
+
+.btn {
+  &.btn-primary {
+    background-color: variables.$color-primary;
+    border-color: variables.$color-primary;
+
+    &:hover,
+    &:focus {
+      background-color: lighten(variables.$color-primary, 12%);
+      border-color: lighten(variables.$color-primary, 12%);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba(lighten(variables.$color-primary, 20%), 0.5);
+    }
+
+    &:not(:disabled):not(.disabled):active {
+      @extend .btn-primary;
+    }
+
+    &[disabled] {
+      background-color: var(--secondary);
+      border-color: var(--gray);
+    }
+  }
+
+  &.btn-link {
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba(lighten(variables.$color-primary, 20%), 0.5);
+    }
+  }
+
+  &.btn-icon {
+    padding: 0;
+    margin: 0 5px;
+    border-radius: 50%;
+    border-color: white;
+    background-color: white;
+
+    &:hover,
+    &:focus {
+      border-color: lighten(gray, 40%);
+      background-color: lighten(gray, 40%);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba(lighten(gray, 20%), 0.5);
+      &:active {
+        background-color: lighten(gray, 20%) !important;
+      }
+    }
+
+    &:not(:disabled):not(.disabled):active {
+      box-shadow: 0 0 0 0.2rem rgba(lighten(gray, 20%), 0.5) !important;
+      background-color: lighten(gray, 60%) !important;
+      border-color: lighten(gray, 60%) !important;
+    }
+
+    svg {
+      color: black;
+    }
+
+    .spinner-border-sm {
+      margin: 0 5px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.mw-800 {
+  max-width: 800px;
+}
+
+.min-h-400 {
+  min-height: 400px;
+}
+
+.row-center {
+  justify-content: center;
+}
+
+.button-create {
+  margin-bottom: 10px;
+}
+
+.login-container {
+  text-align: center;
+  margin: auto !important;
+  position: fixed;
+  -webkit-box-shadow: 5px 5px 10px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 10px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+
+  .round-container {
+    margin: 30px;
+    border-radius: 50%;
+    background-color: variables.$color-primary;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+      color: white;
+      font-size: xx-large;
+    }
+  }
+}
+
+.input-label {
+  display: inline;
+  font-size: 14px;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.invalid-feedback {
+  font-size: 14px !important;
+  text-align: left;
+}
+
+#toggleButton {
+  &.active,
+  &.disabled {
+    background-color: rgb(93, 109, 156);
+  }
+}
+
+.sub-header,
+.row-sub-header {
+  border: 1px solid darken(#e9e8e9, 25%);
+
+  &.hidden {
+    display: none !important;
+  }
+}
+
+.sub-header {
+  height: variables.$color-primary;
+  background-color: darken(#e9e8e9, 10%);
+  font-weight: 600;
+  color: black;
+  text-align: center;
+}
+
+.row-sub-header {
+  height: calc(100% - #{variables.$row-header-height});
+  background-color: #e9e8e9;
+
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.color-primary {
+  color: variables.$color-primary;
+}
+
+.infrastructure-link {
+  position: fixed;
+  bottom: 5px;
+  left: 5px;
+}

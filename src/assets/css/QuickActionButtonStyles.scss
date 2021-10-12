@@ -1,0 +1,32 @@
+button.quick-action-button {
+  width: 45px;
+  height: 45px;
+  margin: 14px 0;
+  padding: 0;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+
+  &.toggled-on {
+    background-color: rgb(255, 176, 30);
+    border-color: rgb(255, 176, 30);
+
+    &:hover,
+    &:focus {
+      background-color: rgb(255, 176, 30);
+      border-color: rgb(255, 176, 30);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgb(255 176 30 / 0.5);
+    }
+
+    &:not(:disabled):not(.disabled):active {
+      @extend .toggled-on
+    }
+  }
+
+  .icon {
+    font-size: large;
+  }
+}

@@ -1,0 +1,61 @@
+@use "../variables";
+
+.main-container {
+  height: calc(100vh - 90px);
+
+  .center-panel {
+    height: calc(100% - 80px);
+  }
+
+  .information {
+    height: 80px;
+    border-top: 1px solid #738782;
+    color: variables.$color-primary;
+    background-color: variables.$color-secondary;
+
+    .feed-data {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .session-data {
+      .participant-name {
+        text-align: right;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .conference-container {
+    height: calc(100vh - 90px);
+  }
+
+  .right-panel {
+    display: none;
+  }
+
+  .floating-button {
+    border: 0;
+    padding-bottom: 8px;
+    position: fixed;
+    top: 96px;
+    right: 6px;
+    z-index: 1;
+    background-color: variables.$color-primary;
+    color: white;
+    transition: 0.25s background-color;
+
+    &:hover {
+      background-color: lighten(variables.$color-primary, 10%);
+    }
+
+    &:focus {
+      box-shadow: 0 0;
+    }
+
+    &.opened {
+      right: calc(25% - 46px);
+      background-color: variables.$color-primary;
+    }
+  }
+}

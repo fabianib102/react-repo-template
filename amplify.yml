@@ -1,0 +1,82 @@
+version: 1
+test:
+  artifacts:
+    baseDirectory: cypress
+    configFilePath: "**/mochawesome.json"
+    files:
+      - "**/*.png"
+      - "**/*.mp4"
+      - "./report/mochawesome-report/*.json"
+  phases:
+    preTest:
+      commands:
+        - npm install
+        - npm install wait-on
+        - "npm run dev & npx wait-on http://127.0.0.1:3000"
+    test:
+      commands:
+        - 'npx cypress run-ct --record --reporter mochawesome --reporter-options "reportDir=cypress/report/mochawesome-report,overwrite=false,html=false,json=true,timestamp=mmddyyyy_HHMMss"'
+        - 'npx cypress run --record --reporter mochawesome --reporter-options "reportDir=cypress/report/mochawesome-report,overwrite=false,html=false,json=true,timestamp=mmddyyyy_HHMMss"'
+    postTest:
+      commands:
+        - npx mochawesome-merge@4 cypress/report/mochawesome-report/*.json > cypress/report/mochawesome.json
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - echo @southworks:registry=https://npm.pkg.github.com/ >> ~/.npmrc
+        - echo //npm.pkg.github.com/:_authToken=${AUTH_TOKEN} >> ~/.npmrc
+        - npm ci
+        - npm run linter
+        - npm run test:service
+        - echo "replacing prod env variables"
+        - export BUILD_NUMBER=$(echo $AWS_JOB_ID | sed 's/^0*//')
+        - if [ $AWS_BRANCH == "main" ] || [ $AWS_BRANCH == "master" ]; then
+            amplifyenvironment=${AWS_BRANCH}; else amplifyenvironment=pr-${AWS_PULL_REQUEST_ID};
+          fi
+        - sed -i "s@__VERSION__@${BUILD_NUMBER}@g" src/components/Footer.tsx
+        - sed -i "s@__URL_PROD__@${URL_PROD}@g" .env cypress.json
+        - sed -i "s@__APP_CLIENT_ID_PROD__@${APP_CLIENT_ID_PROD}@g" .env cypress.json
+        - sed -i "s@__REGION_PROD__@${REGION_PROD}@g" .env
+        - sed -i "s@__USER_POOL_ID_PROD__@${USER_POOL_ID_PROD}@g" .env
+        - sed -i "s@__SIGNIN_DOMAIN__@${SIGNIN_DOMAIN}@g" .env
+        - sed -i "s@__IDENTITY_POOL_ID__@${IDENTITY_POOL_ID}@g" .env
+        - sed -i "s@__IDP_REDIRECT_URL__@https://${amplifyenvironment}.${AWS_APP_ID}.amplifyapp.com/login@g" .env
+        - sed -i "s@__STREAM_MANAGER_URL_PROD__@${STREAM_MANAGER_URL_PROD}@g" .env cypress.json
+        - sed -i "s@__EMBEDDABLE_PLAYER_URL_PROD__@${EMBEDDABLE_PLAYER_URL_PROD}@g" .env cypress.json
+        - sed -i "s@__STREAM_MANAGER_ACCESS_TOKEN_PROD__@${STREAM_MANAGER_ACCESS_TOKEN_PROD}@g" .env cypress.json
+        - sed -i "s@__HOSTED_ZONE_DOMAIN_PROD__@${HOSTED_ZONE_DOMAIN_PROD}@g" .env
+        - sed -i "s@__SHARED_OBJECT_ENDPOINT__@${SHARED_OBJECT_ENDPOINT}@g" .env
+        - cat .env
+    build:
+      commands:
+        - callbackurls=`aws cognito-idp describe-user-pool-client --user-pool-id ${USER_POOL_ID_PROD} --region ${REGION_PROD} --client-id ${APP_CLIENT_ID_PROD} --output text | grep "CALLBACKURLS" | awk '{print $2}'`
+        - signouturls=`aws cognito-idp describe-user-pool-client --user-pool-id ${USER_POOL_ID_PROD} --region ${REGION_PROD} --client-id ${APP_CLIENT_ID_PROD} --output text | grep "LOGOUTURLS" | awk '{print $2}'`
+        - |
+          aws cognito-idp update-user-pool-client \
+          --user-pool-id ${USER_POOL_ID_PROD} \
+          --region ${REGION_PROD} \
+          --client-id ${APP_CLIENT_ID_PROD} \
+          --callback-urls ${callbackurls} https://${amplifyenvironment}.${AWS_APP_ID}.amplifyapp.com/login \
+          --logout-urls ${signouturls} https://${amplifyenvironment}.${AWS_APP_ID}.amplifyapp.com/login \
+          --read-attributes ${USER_POOL_READ_ATTRIBUTES} \
+          --write-attributes ${USER_POOL_WRITE_ATTRIBUTES} \
+          --explicit-auth-flows ${USER_POOL_EXPLICIT_AUTH_FLOWS} \
+          --supported-identity-providers ${USER_POOL_SUPPORTED_IDENTITY_PROVIDERS} \
+          --allowed-o-auth-flows ${USER_POOL_ALLOWED_OAUTH_FLOWS} \
+          --allowed-o-auth-scopes ${USER_POOL_ALLOWED_OAUTH_SCOPES} \
+          ${USER_POOL_ALLOWED_OAUTH_FLOWS_CLIENT} > /dev/null
+        - if [ $AWS_BRANCH == "main" ] || [ $AWS_BRANCH == "master" ]; then
+            prnumber=`aws amplify get-job --app-id ${AWS_APP_ID} --branch-name ${amplifyenvironment} --job-id ${AWS_JOB_ID} | grep "commitMessage" | grep -oP '(?<=#).*?(?=\))'`;
+            callbackurlsfordelete=`echo "${callbackurls}" | tr " " "\n" | grep -v "pr-${prnumber}.${AWS_APP_ID}"`;
+            signouturlsfordelete=`echo "${signouturls}" | tr " " "\n" | grep -v "pr-${prnumber}.${AWS_APP_ID}"`;
+            aws cognito-idp update-user-pool-client --user-pool-id ${USER_POOL_ID_PROD} --region ${REGION_PROD} --client-id ${APP_CLIENT_ID_PROD} --callback-urls ${callbackurlsfordelete} --read-attributes ${USER_POOL_READ_ATTRIBUTES} --write-attributes ${USER_POOL_WRITE_ATTRIBUTES} --explicit-auth-flows ${USER_POOL_EXPLICIT_AUTH_FLOWS} --supported-identity-providers ${USER_POOL_SUPPORTED_IDENTITY_PROVIDERS} --logout-urls ${signouturlsfordelete} --allowed-o-auth-flows ${USER_POOL_ALLOWED_OAUTH_FLOWS} --allowed-o-auth-scopes ${USER_POOL_ALLOWED_OAUTH_SCOPES} ${USER_POOL_ALLOWED_OAUTH_FLOWS_CLIENT} > /dev/null;
+          fi
+        - npm run build
+  artifacts:
+    baseDirectory: build
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*

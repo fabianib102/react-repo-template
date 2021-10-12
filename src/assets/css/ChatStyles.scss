@@ -1,0 +1,11 @@
+@use "./variables";
+
+.consumer-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  font-size: larger;
+  color: white;
+  background-color: variables.$color-primary;
+}

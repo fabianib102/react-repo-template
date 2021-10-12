@@ -1,0 +1,44 @@
+@use "./variables";
+
+.page-header {
+  width: 100%;
+  height: 90px;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  background-color: variables.$color-secondary;
+  color: white;
+
+  img {
+    height: 70px;
+  }
+
+  .logo {
+    width: 25%;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .title {
+    visibility: hidden;
+  }
+
+  .logout {
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .page-header {
+    .title {
+      visibility: visible;
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      font-size: x-large;
+      color: white;
+    }
+  }
+}

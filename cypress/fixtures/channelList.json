@@ -1,0 +1,92 @@
+[
+  {
+    "id": "channelname1",
+    "channelName": "channelName1",
+    "createdOn": "1607522733704",
+    "date": "1607522733704",
+    "channelStatus": "online",
+    "ingestUrl": "rtmp://saraza/live",
+    "protocol": "webrtc"
+  },
+  {
+    "id": "channelname2",
+    "channelName": "channelName2",
+    "createdOn": "1607522733705",
+    "date": "1607522733705",
+    "channelStatus": "online",
+    "ingestUrl": "rtmp://saraza/live",
+    "protocol": "webrtc"
+  },
+  {
+    "id": "channelname3",
+    "channelName": "channelName3",
+    "createdOn": "1607522733706",
+    "date": "1607522733706",
+    "channelStatus": "online",
+    "ingestUrl": "rtmp://saraza/live",
+    "protocol": "webrtc"
+  },
+  {
+    "id": "channelname4",
+    "channelName": "channelName4",
+    "createdOn": "1607522733707",
+    "date": "1607522733707",
+    "channelStatus": "online",
+    "ingestUrl": "rtmp://saraza/live",
+    "protocol": "webrtc"
+  },
+  {
+    "id": "channelname5",
+    "channelName": "channelName5",
+    "createdOn": "1607522733708",
+    "date": "1607522733708",
+    "channelStatus": "online",
+    "ingestUrl": "rtmp://saraza/live",
+    "protocol": "webrtc"
+  },
+  {
+    "id": "channelname6",
+    "channelName": "channelName6",
+    "createdOn": "1607522733709",
+    "date": "1607522733709",
+    "channelStatus": "online",
+    "ingestUrl": "rtmp://saraza/live",
+    "protocol": "webrtc"
+  },
+  {
+    "id": "channelname7",
+    "channelName": "channelName7",
+    "createdOn": "1607522733710",
+    "date": "1607522733710",
+    "channelStatus": "online",
+    "ingestUrl": "rtmp://saraza/live",
+    "protocol": "webrtc"
+  },
+  {
+    "id": "channelname8",
+    "channelName": "channelName8",
+    "createdOn": "1607522733711",
+    "date": "1607522733711",
+    "channelStatus": "online",
+    "ingestUrl": "rtmp://saraza/live",
+    "protocol": "webrtc"
+  },
+  {
+    "id": "channelname9",
+    "channelName": "channelName9",
+    "createdOn": "1607522733712",
+    "date": "1607522733712",
+    "channelStatus": "online",
+    "ingestUrl": "rtmp://saraza/live",
+    "protocol": "webrtc"
+  },
+  {
+    "id": "channelname10",
+    "channelName": "channelName10",
+    "createdOn": "1607522733713",
+    "date": "1607522733713",
+    "channelStatus": "online",
+    "ingestUrl": "rtmp://saraza/live",
+    "protocol": "webrtc"
+  }
+]

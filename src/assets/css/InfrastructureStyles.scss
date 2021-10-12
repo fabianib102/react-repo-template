@@ -1,0 +1,51 @@
+@use './variables';
+
+.infrastructure {
+  .p-top-bottom-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .card-header {
+    font-size: large;
+  }
+
+  .list-group-flush {
+    .list-group-item {
+      padding: 0.4rem 0 !important;
+      .instance-status {
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+        svg {
+          margin: 0 5px;
+        }
+        &.running {
+          color: green;
+        }
+        &.stop {
+          color: red;
+        }
+        &.in-progress {
+          color: #0073bb;
+        }
+      }
+    }
+    padding-bottom: 20px;
+  }
+
+  .badge {
+    &.running {
+      color: white;
+      background-color: green;
+    }
+    &.stop {
+      color: white;
+      background-color: red;
+    }
+    &.in-progress {
+      color: white;
+      background-color: #0073bb;
+    }
+  }
+}

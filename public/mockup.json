@@ -1,0 +1,38 @@
+ [
+    {
+      "id": "00cc86a4-da2d-4fab-b01c-3212407e3c53",
+      "name": "Test 1",
+      "description": "Test",
+      "createdOn": "2020-11-16",
+      "deletedOn": null,
+      "streamId": "stream-00cc86a4-da2d-4fab-b01c-3212407e3c53",
+      "channelStatus": "live",
+      "errorDetails": "",
+      "ingestUrl": "",
+      "protocol": "RTMP"
+    },
+    {
+      "id": "77b6f756-c8be-496e-a59d-d2431050003a",
+      "name": "Test 2",
+      "description": "Test 2",
+      "createdOn": "2020-05-22",
+      "deletedOn": null,
+      "streamId": "stream-77b6f756-c8be-496e-a59d-d2431050003a",
+      "channelStatus": "offline",
+      "errorDetails": "",
+      "ingestUrl": "",
+      "protocol": "WebRTC"
+    },
+    {
+      "id": "5ad1df3d-4984-45ca-84a0-04240f2394b6",
+      "name": "Test 3",
+      "description": "Test 3",
+      "createdOn": "2020-04-01",
+      "deletedOn": null,
+      "streamId": "stream-5ad1df3d-4984-45ca-84a0-04240f2394b6",
+      "channelStatus": "offline",
+      "errorDetails": "",
+      "ingestUrl": "",
+      "protocol": "SRT"
+    }
+  ]

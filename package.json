@@ -1,0 +1,106 @@
+{
+  "name": "react-webapp",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@southworks/custom-shared-object-client": "^1.0.6",
+    "@southworks/red5pro-player": "^1.0.40",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.0.1",
+    "@types/react": "^17.0.4",
+    "@types/react-dom": "^17.0.3",
+    "@types/react-router-dom": "^5.1.7",
+    "aws-amplify": "^3.3.27",
+    "aws-amplify-react": "^4.2.31",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.5.2",
+    "react-data-table-component": "^6.11.7",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "react-use-websocket": "^2.6.1",
+    "red5pro-html-sdk": "^7.2.2",
+    "robust-websocket": "^1.0.0",
+    "sass": "^1.32.12",
+    "slugify": "^1.5.0",
+    "styled-components": "^5.2.3",
+    "typescript": "^4.2.4",
+    "web-vitals": "^1.1.1"
+  },
+  "scripts": {
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "test:service": "cross-env NODE_ICU_DATA=node_modules/full-icu jest",
+    "test:unit": "cypress open-ct",
+    "test:unit-run": "cypress run-ct",
+    "test:e2e": "npx cypress open",
+    "test:e2e-run": "cypress run",
+    "lint:eslint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" \"test/**/*.{js,jsx,ts,tsx}\"",
+    "format:eslint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\" \"test/**/*.{js,jsx,ts,tsx}\"",
+    "linter": "npm run lint:eslint & npm run lint:prettier",
+    "format:prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\" \"test/**/*.{js,jsx,ts,tsx}\"",
+    "lint:prettier": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\" \"test/**/*.{js,jsx,ts,tsx}\"",
+    "format": "npm run format:eslint && npm run format:prettier"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.0",
+    "@babel/preset-typescript": "^7.13.0",
+    "@cypress/react": "^5.4.2",
+    "@cypress/webpack-dev-server": "^1.1.6",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^13.1.8",
+    "@types/lodash": "^4.14.168",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "cross-env": "^7.0.3",
+    "cypress": "^7.2.0",
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-typescript-prettier": "^4.2.0",
+    "full-icu": "^1.3.4",
+    "jest-fetch-mock": "^3.0.3",
+    "mocha": "^8.3.2",
+    "mochawesome": "^6.2.2",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.2.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.2.1",
+    "regenerator-runtime": "^0.13.7",
+    "start-server-and-test": "^1.12.1"
+  },
+  "jest": {
+    "verbose": true,
+    "silent": true,
+    "setupFilesAfterEnv": [
+      "./setupJest.js"
+    ],
+    "testMatch": [
+      "**/?(*.)+(test).[jt]s?(x)"
+    ]
+  }
+}

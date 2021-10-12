@@ -1,0 +1,27 @@
+@use "./variables";
+
+table {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  margin-top: 10px;
+
+  td {
+    width: 6%;
+    height: 13%;
+    border: 2px solid black;
+    text-align: center;
+    font-weight: 700;
+    color: white;
+    background-color: variables.$color-primary;
+
+    &.active,
+    &.called.active {
+      background-color: #3de29f;
+    }
+
+    &.called {
+      background-color: #ea2218;
+    }
+  }
+}
